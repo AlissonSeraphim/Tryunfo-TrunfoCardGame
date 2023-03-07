@@ -42,12 +42,12 @@ class App extends React.Component {
     } = this.state;
 
     if (!cardName || !cardDescription || !cardImage || !cardRare) {
-      console.log('algum campo vazio');
+      console.log('algum campo está vazio');
       return true;
     }
 
     // Esta concatenando ao invés de somar os valores individuais.
-    const sumAttribute = (cardAttr1 + cardAttr2 + cardAttr3);
+    const sumAttribute = (+cardAttr1 + +cardAttr2 + +cardAttr3);
     console.log(sumAttribute);
     console.log(cardAttr1);
     console.log(cardAttr2);
