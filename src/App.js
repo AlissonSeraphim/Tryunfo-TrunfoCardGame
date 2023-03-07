@@ -17,7 +17,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: true,
+      // isSaveButtonDisabled: true,
     };
   }
 
@@ -89,7 +89,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
     } = this.state;
 
     return (

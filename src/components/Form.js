@@ -17,6 +17,8 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
 
+    console.log(hasTrunfo); // somente pra tirar o erro TEMPORARIO
+
     return (
       <div>
         <label>
