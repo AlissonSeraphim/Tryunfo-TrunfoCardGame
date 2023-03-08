@@ -7,6 +7,8 @@ class App extends React.Component {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.verificationButton = this.verificationButton.bind(this);
+    this.saveCard = this.saveCard.bind(this);
+
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -17,6 +19,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
+      arrayCards: [],
       // isSaveButtonDisabled: true,
     };
   }
@@ -48,9 +51,9 @@ class App extends React.Component {
 
     // Esta concatenando ao invés de somar os valores individuais.
     const sumAttribute = (+cardAttr1 + +cardAttr2 + +cardAttr3);
-    console.log(sumAttribute);
-    console.log(cardAttr1);
-    console.log(cardAttr2);
+    // console.log(sumAttribute);
+    // console.log(cardAttr1);
+    // console.log(cardAttr2);
 
     const limitSum = 210;
     const limitAttribute = 90;
@@ -78,6 +81,47 @@ class App extends React.Component {
     return false;
   }
 
+  saveCard(event) {
+    event.preventDefault();
+
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      arrayCards,
+    } = this.state;
+
+    const newCardObject = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    };
+
+    this.setState({
+
+      arrayCards: [...arrayCards, newCardObject],
+
+      // reset do formulario
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -89,6 +133,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      arrayCards,
     } = this.state;
 
     return (
@@ -105,7 +150,10 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ this.verificationButton() }
+          onSaveButtonClick={ this.saveCard }
           onInputChange={ this.onInputChange }
+          arrayCards={ arrayCards }
+
         />
         <Card
           cardName={ cardName }
