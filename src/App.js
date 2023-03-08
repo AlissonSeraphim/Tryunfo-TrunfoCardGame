@@ -160,6 +160,7 @@ class App extends React.Component {
       cardTrunfo,
       arrayCards,
       searchName,
+      selectRare,
     } = this.state;
 
     return (
@@ -182,6 +183,7 @@ class App extends React.Component {
         />
         <Filters
           searchName={ searchName }
+          selectRare={ selectRare }
           onInputChange={ this.onInputChange }
         />
         <Card
@@ -197,7 +199,7 @@ class App extends React.Component {
         <div>
           {
             arrayCards
-              .filter((card) => card.cardName.includes(searchName))
+              // .filter((card) => card.cardName.includes(searchName))
               .map((card) => (
                 <>
                   <Card

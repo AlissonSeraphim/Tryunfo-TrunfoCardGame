@@ -6,6 +6,7 @@ class Filters extends React.Component {
     const {
       searchName,
       onInputChange,
+      selectRare,
     } = this.props;
 
     return (
@@ -20,6 +21,19 @@ class Filters extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+        <label>
+          Selecione a Raridade:
+          <select
+            data-testid="rare-filter"
+            name="selectRare"
+            value={ selectRare }
+            onChange={ onInputChange }
+          >
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
+          </select>
+        </label>
       </div>
     );
   }
@@ -28,6 +42,7 @@ class Filters extends React.Component {
 Filters.propTypes = {
   searchName: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  selectRare: PropTypes.string.isRequired,
 };
 
 export default Filters;
