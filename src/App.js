@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Filters from './components/Filters';
 
 class App extends React.Component {
   constructor() {
@@ -158,6 +159,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       arrayCards,
+      searchName,
     } = this.state;
 
     return (
@@ -177,6 +179,10 @@ class App extends React.Component {
           onSaveButtonClick={ this.saveCard }
           onInputChange={ this.onInputChange }
           arrayCards={ arrayCards }
+        />
+        <Filters
+          searchName={ searchName }
+          onInputChange={ this.onInputChange }
         />
         <Card
           cardName={ cardName }
