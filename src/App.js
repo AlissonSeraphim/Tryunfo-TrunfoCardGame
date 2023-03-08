@@ -196,28 +196,30 @@ class App extends React.Component {
         />
         <div>
           {
-            arrayCards.map((card) => (
-              <>
-                <Card
-                  key={ card.cardName }
-                  cardName={ card.cardName }
-                  cardDescription={ card.cardDescription }
-                  cardAttr1={ card.cardAttr1 }
-                  cardAttr2={ card.cardAttr2 }
-                  cardAttr3={ card.cardAttr3 }
-                  cardImage={ card.cardImage }
-                  cardRare={ card.cardRare }
-                  cardTrunfo={ card.cardTrunfo }
-                />
-                <button
-                  data-testid="delete-button"
-                  type="button"
-                  onClick={ () => { this.deleteCard(card.cardName); } }
-                >
-                  Delete Card
-                </button>
-              </>
-            ))
+            arrayCards
+              .filter((card) => card.cardName.includes(searchName))
+              .map((card) => (
+                <>
+                  <Card
+                    key={ card.cardName }
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
+                  <button
+                    data-testid="delete-button"
+                    type="button"
+                    onClick={ () => { this.deleteCard(card.cardName); } }
+                  >
+                    Delete Card
+                  </button>
+                </>
+              ))
           }
         </div>
       </div>
