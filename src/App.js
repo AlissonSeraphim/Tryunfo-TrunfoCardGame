@@ -199,7 +199,7 @@ class App extends React.Component {
         <div>
           {
             arrayCards
-              // .filter((card) => card.cardName.includes(searchName))
+              // .filter((card) => card.cardName.includes(searchName)) ué
               .map((card) => (
                 <>
                   <Card
