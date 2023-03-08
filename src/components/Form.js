@@ -95,20 +95,23 @@ class Form extends React.Component {
         </label>
         <label>
           Super Trunfo ?:
-          { hasTrunfo
-            ? <p data-testid="trunfo-input">Você já tem um Super Trunfo em seu baralho</p>
-            : (<input
-            // eslint-disable-next-line react/jsx-indent-props
-              type="checkbox"
-              // eslint-disable-next-line react/jsx-indent-props
-              data-testid="trunfo-input"
-              // eslint-disable-next-line react/jsx-indent-props
-              name="cardTrunfo"
-              // eslint-disable-next-line react/jsx-indent-props
-              checked={ cardTrunfo }
-              // eslint-disable-next-line react/jsx-indent-props
-              onChange={ onInputChange }
-            />)}
+          {
+            hasTrunfo
+              ? (
+                <p data-testid="trunfo-input">
+                  Você já tem um Super Trunfo em seu baralho
+                </p>
+              )
+              : (
+                <input
+                  type="checkbox"
+                  data-testid="trunfo-input"
+                  name="cardTrunfo"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />
+              )
+          }
         </label>
         <button
           type="submit"
