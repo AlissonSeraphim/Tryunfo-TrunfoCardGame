@@ -33,6 +33,14 @@ class App extends React.Component {
     });
   }
 
+  trunfoValidation = () => {
+    const {
+      arrayCards,
+    } = this.state;
+
+    return arrayCards.some((card) => card.cardTrunfo);
+  };
+
   verificationButton() {
     const {
       cardName,
@@ -49,7 +57,7 @@ class App extends React.Component {
       return true;
     }
 
-    // Esta concatenando ao invés de somar os valores individuais.
+    // Esta concatenando ao invés de somar os valores individuais.Resolvido.
     const sumAttribute = (+cardAttr1 + +cardAttr2 + +cardAttr3);
     // console.log(sumAttribute);
     // console.log(cardAttr1);
@@ -93,6 +101,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       arrayCards,
+      cardTrunfo,
+      hasTrunfo,
     } = this.state;
 
     const newCardObject = {
@@ -103,12 +113,15 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
+      hasTrunfo,
     };
+
+    console.log(arrayCards.some((card) => card.cardTrunfo));
 
     this.setState({
 
       arrayCards: [...arrayCards, newCardObject],
-
       // reset do formulario
       cardName: '',
       cardDescription: '',
@@ -132,7 +145,6 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
       arrayCards,
     } = this.state;
 
@@ -148,12 +160,11 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
+          hasTrunfo={ this.trunfoValidation() }
           isSaveButtonDisabled={ this.verificationButton() }
           onSaveButtonClick={ this.saveCard }
           onInputChange={ this.onInputChange }
           arrayCards={ arrayCards }
-
         />
         <Card
           cardName={ cardName }
