@@ -41,6 +41,18 @@ class App extends React.Component {
     return arrayCards.some((card) => card.cardTrunfo);
   };
 
+  deleteCard = (cardName) => {
+    const {
+      arrayCards,
+    } = this.state;
+
+    const newArray = arrayCards.filter((card) => card.cardName !== cardName);
+    console.log(newArray);
+    this.setState({
+      arrayCards: newArray,
+    });
+  };
+
   verificationButton() {
     const {
       cardName,
@@ -176,21 +188,32 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-
-        {
-          arrayCards.map((card) => (
-            <Card
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />))
-        }
+        <div>
+          {
+            arrayCards.map((card) => (
+              <>
+                <Card
+                  key={ card.cardName }
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+                <button
+                  data-testid="delete-button"
+                  type="button"
+                  onClick={ () => { this.deleteCard(card.cardName); } }
+                >
+                  Delete Card
+                </button>
+              </>
+            ))
+          }
+        </div>
       </div>
     );
   }
